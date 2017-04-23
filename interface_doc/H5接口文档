@@ -1,0 +1,7 @@
+1.根据用户名判断用户是否注册过
+接口URL: /webUser/queryByUsername.do
+入参:username 注册用户名
+返回值:
+code:FAIL表示请求请求失败,SUCCESS表示请求成功
+data:true 表示用户名已经注册, false 表示用户名尚未注册
+description:当请求失败时,此字段表示失败原因,若请求成功,则此字段为空

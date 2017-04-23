@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="zls_log4j2" status="error">
+	<!-- 抽离一些公共属性,例如用户模块的日志文件存放位置 -->
+	<Properties>
+		<Property name="userFile">/Users/dxlau/Documents/test_workspace/user_file.log</Property>
+	</Properties>
+
+	<!-- 配置Appenders -->
+	<Appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+		</Console>
+
+		<File name="file" fileName="${userFile}">
+			<PatternLayout>
+				<pattern>%d %-5level %logger{36} - %msg%n</pattern>
+			</PatternLayout>
+		</File>
+	</Appenders>
+
+	<!-- 配置Loggers -->
+	<Loggers>
+		<!-- Root Logger -->
+		<Root level="info">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+		<!-- User模块日志 -->
+		<Logger name="userLogger" level="debug" additivity="false">
+			<AppenderRef ref="file" />
+		</Logger>
+		
+		<!-- mybatis-spring整合日志,包含映射器初始化以及注入spring容器、初始化具体sql前的sqlSession初始化;它会在初始化映射器的过程中,调用mybatis自身-->
+		<Logger name="org.mybatis.spring" level="error" additivity="false">
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+		<!-- mybatis自身初始化日志,包含类型映射等功能 -->
+		<Logger name="org.apache.ibatis" level="error" additivity="false">
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+		<!-- Mybatis动态生成的sql语句,具体的业务sql生成 -->
+		<Logger name="com.zls.dao" level="debug" additivity="false">
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+		<!-- Spring日志 -->
+		<Logger name="org.springframework" level="error" additivity="false">
+			<AppenderRef ref="STDOUT"/>
+		</Logger>
+	</Loggers>
+</Configuration>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>文件上传</title>
+<script src="/resources/js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<h1>文件上传1:使用form表单submit提交</h1>
+	<form action="/home/fileUpload" id="upload_submit" name="u_name"
+		method="post" enctype="multipart/form-data">
+		<h5>请点击按钮选择上传文件:</h5>
+		<input type="file" name="file1" id="file1" /> <br /> <input
+			type="submit" value="立刻上传" />
+	</form>
+
+	<hr>
+	<h1>文件上传2:使用FormData对象进行文件上传</h1>
+	<form id="upload_2" name="u_name2"
+		method="post" enctype="multipart/form-data">
+		<h5>请点击按钮选择上传文件:</h5>
+		<input type="file" name="file1" id="file2" /> <br />
+		<input type="text" name="ft_name" id="ft_1" placeholder="文件名称">
+		<br/>
+		<button id="btn_upload">点我上传</button>
+	</form>
+</body>
+
+<script type="text/javascript">
+	$(function(){
+		$("form").submit(function(e){
+		    e.preventDefault();
+		  });
+		// banding 'btn_upload' click事件
+		$('#btn_upload').bind('click', function(){
+			var formData = new FormData();
+			var file2 = $("#file2")[0].files[0];
+			var fileName = $("#ft_1").val();
+			
+			formData.append("file1",file2);
+			formData.append("newFileName",fileName);
+			
+			var url = "/home/fileUpload";
+			if(file2.size <= parseInt(20*1024)){
+				$.ajax({  
+	                url : url,  
+	                type : 'POST',  
+	                data : formData,
+	                processData : false,  
+	                contentType : false,  
+	                success : function(responseStr) {  
+	                      alert("成功：" + JSON.stringify(responseStr));  
+	                },  
+	                error : function(responseStr) {  
+	                    alert("失败:" + JSON.stringify(responseStr));  
+	                } 
+				});
+			}else{
+				alert("上传的文件大于20M!");
+			}
+			/** $.ajax({  
+                url : url,  
+                type : 'POST',  
+                data : formData,
+                processData : false,  
+                contentType : false,  
+                success : function(responseStr) {  
+                      alert("成功：" + JSON.stringify(responseStr));  
+                },  
+                error : function(responseStr) {  
+                    alert("失败:" + JSON.stringify(responseStr));  
+                }  
+            }); **/
+		});
+	});
+</script>
+</html>

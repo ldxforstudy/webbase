@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax_跨域</title>
+</head>
+<body>
+	<button id="_queryUser" name="queryUser">查询用户</button>
+</body>
+<script src="/resources/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#_queryUser").bind('click', function(){
+			//异步请求 跨域
+			var url = "http://127.0.0.1:7080/consumer/cARecord";
+			$.ajax({
+				type:'GET',
+				crossDomain: true,
+				dataType: "json",
+				url:url,
+				xhrFields: {
+	                withCredentials: true // 确保请求会携带上Cookie
+	              },
+	            beforeSend: function(xhr) {
+	                  xhr.setRequestHeader("Content-Type", "application/json"); // 设置请求协议，会触发PreFlight
+	             },
+				success:function(data){
+					alert(JSON.stringify(data));
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					//alert("返回状态码:"+XMLHttpRequest.status);
+					if (XMLHttpRequest.status == 999){
+						window.open('register.html', '_self');
+					}
+				}
+			});
+		});
+	});
+</script>
+</html>

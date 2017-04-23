@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- tomcat-jdbc 数据源 -->
+	<bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
+		destroy-method="close">
+		<property name="poolProperties">
+			<bean class="org.apache.tomcat.jdbc.pool.PoolProperties">
+				<property name="driverClassName" value="${tomcat.jdbc.driverClassName}" />
+				<property name="url" value="${tomcat.jdbc.url}" />
+				<property name="username" value="${tomcat.jdbc.username}" />
+				<property name="password" value="${tomcat.jdbc.password}" />
+			</bean>
+		</property>
+	</bean>
+	<!-- 整合mybatis -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<!-- xml配置文件所在位置 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath*:com/zls/dao/mapper/xml/*Mapper.xml</value>
+			</list>
+		</property>
+		
+		<property name="typeAliasesPackage" value="com.zls.dao.model"/>
+	</bean>
+	
+	<!-- 扫描mybatis映射器,mapper接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.zls.dao.mapper"/>
+	</bean>
+</beans>

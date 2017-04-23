@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ajax_Test</title>
+</head>
+<body>
+	<button id="_queryUser" name="queryUser">查询用户</button>
+</body>
+<script src="/resources/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#_queryUser").bind('click', function(){
+			//异步请求 跨域
+			
+			$.ajax({
+				type:'GET',
+				url:'/user/query.do',
+				success:function(data){
+					alert("用户名为:"+data.username);
+				},
+				error:function(XMLHttpRequest,textStatus,errorThrown){
+					alert(textStatus);
+				}
+			});
+		});
+	});
+</script>
+</html>

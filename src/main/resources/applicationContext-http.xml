@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- apache httpclient 配置 -->
+	<!-- 配置apache连接池,暂时采用默认配置 -->
+	<bean id="poolConnManager"
+		class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager"
+		destroy-method="close">
+	</bean>
+
+	<!-- 配置httpclient创建工厂 -->
+	<bean id="httpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder"
+		factory-method="create">
+		<property name="connectionManager" ref="poolConnManager" />
+	</bean>
+
+	<!-- 配置httpClient -->
+	<bean id="httpClient" factory-bean="httpClientBuilder"
+		factory-method="build" />
+	<!-- apache httpclient 配置结束 -->
+
+	<!-- 配置工具类 -->
+	<bean id="httpClientUtil" class="com.zls.util.HttpClientUtil">
+		<property name="httpClient" ref="httpClient" />
+	</bean>
+</beans>

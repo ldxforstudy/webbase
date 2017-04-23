@@ -1,0 +1,21 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+.classpath
+.project
+
+target/
+.settings/
+
+src/main/resources/spring.core.test.xml
+
+/test-output
+
+generatorConfig.xml
+
+# IDEA
+.idea/
+*.iml

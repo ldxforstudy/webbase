@@ -1,0 +1,228 @@
+body,div,input{
+	padding: 0;margin: 0;
+}
+body{
+	background-image: url(../images/bg1.jpg);
+	background-repeat: no-repeat;
+}
+.box{
+	width: 30%;
+	position: relative;
+	margin: 8% auto 0 auto;
+}
+.header{
+	height: 70px;
+	background-color: #23232e;
+	border-top-left-radius:15px;border-top-right-radius:15px; 
+	-webkit-border-top-left-radius:15px;-webkit-border-top-right-radius:15px;
+	-o-border-top-left-radius:15px;-o-border-top-right-radius:15px;
+	-moz-border-top-left-radius:15px;-moz-border-top-right-radius:15px;
+}
+.header_left{
+	color: #ffffff;
+	font-size: 2em;
+	line-height: 70px;
+	margin-left: 30%;
+	width: 40%;
+}
+.header_info,.header_left{
+	float: left;
+}
+.header_info label{
+	display: block;
+	float: right;
+	margin: 20px 10px 0 0;
+	width: 25px;height:25px;
+	border-radius: 50%;
+	-moz-border-radius:50%; 
+	-o-border-radius:50%;
+	-webkit-border-radius:50%;
+}
+.lab1{
+	background-color: #6756ea;
+}
+.lab2{
+	background-color: #ea569a;
+}
+.lab3{
+	background-color: #f1c85f;
+}
+.content{
+	background-color: #2b2b36;
+	height: 300px;	
+}
+.content form{
+	height: 92%;
+	padding: 4% 0;
+}
+.content .input_box{
+	padding: 20px 0;
+	border-bottom: 1px solid #484856;
+}
+.content .input_box span{
+	font-size: 1.4em;
+	color: #9199aa;
+	padding: 0 20px;
+}
+
+.content .input_box input{
+	width: 50%;
+	border:0px;
+	outline: none;
+	background-color: #2b2b36;
+	cursor: pointer;
+	color: #9199aa;font-size: 1.4em;
+}
+.register button{
+	height: 70px;width: 100%;border:0px;outline: none;
+	background-color: #3ea751;
+	font-size: 2em;color: #ffffff;
+	border-bottom-left-radius:15px;border-bottom-right-radius:15px; 
+	-webkit-bottom-top-left-radius:15px;-webkit-bottom-top-right-radius:15px;
+	-o-border-bottom-left-radius:15px;-o-border-bottom-right-radius:15px;
+	-moz-border-bottom-left-radius:15px;-moz-border-bottom-right-radius:15px;
+}
+.register button:hover{
+	background-color: #ff2775;
+}
+
+/*--start-responsive-design--*/
+@media (max-width:1440px){
+
+}
+@media (max-width:1366px){
+}
+@media (max-width:1280px){
+	.box {
+	  width: 40%;
+	  margin: 10% auto 0 auto;
+	}
+	.header_left{
+		font-size: 2.2em;
+		width: 30%;
+	}
+	.header_info label{
+		margin: 20px 10px 0 0;
+		width: 22px;height:22px;
+	}
+	.content .input_box span{
+		font-size: 1.5em;
+		padding: 0 23px;
+	}
+}
+@media (max-width:1024px){
+	.box {
+	  width: 45%;
+	  margin: 15% auto 0 auto;
+	}
+	.header_left{
+		font-size: 2.2em;
+		width: 30%;
+	}
+	.header_info label{
+		margin: 20px 10px 0 0;
+		width: 22px;height:22px;
+	}
+	.content .input_box span{
+		font-size: 1.5em;
+		padding: 0 23px;
+	}
+}
+@media (max-width:768px){
+	.box {
+	  width: 50%;
+	  margin: 20% auto 0 auto;
+	}
+
+	.header_info label{
+		margin: 20px 10px 0 0;
+		width: 20px;height:20px;
+	}
+	.content form{
+		height: 92%;
+		padding: 4% 0;
+	}
+}
+@media (max-width:640px){
+	.box {
+	  width: 60%;
+	  margin: 20% auto 0 auto;
+	}
+	.header_left{
+		font-size: 2.2em;
+		width: 30%;
+	}
+}
+@media (max-width:480px){
+	.box {
+	  width: 75%;
+	  margin: 20% auto 0 auto;
+	}
+
+	.header{
+		height: 60px;
+	}
+	.header_left{
+		font-size: 1.7em;
+		line-height: 60px;
+	}
+	.header_info label{
+		margin: 20px 7px 0 0;
+		width: 18px;height:18px;
+	}
+	.content form{
+		height: 92%;
+		padding: 4% 0;
+	}
+	.content .input_box{
+		padding: 17px 0;
+	}
+	.content .input_box span{
+		font-size: 1.4em;
+		padding: 0 10px;
+	}
+	.register button{
+		height: 60px;font-size: 1.7em;
+	}
+}
+@media (max-width:320px){
+	.box {
+	  width: 90%;
+	  margin: 10% auto 0 auto;
+	}
+
+	body {
+	    min-height: 504px;
+	}
+
+	.header{
+		height: 50px;
+	}
+	.header_left{
+		font-size: 1.5em;
+		line-height: 50px;
+		margin-left: 20%;
+	}
+	.header_info label{
+		margin: 20px 7px 0 0;
+		width: 15px;height:15px;
+	}
+	.content form{
+		height: 92%;
+		padding: 4% 0;
+	}
+	.content .input_box{
+		padding: 15px 0;
+	}
+	.content .input_box span{
+		font-size: 1.2em;
+	}
+	.content .input_box input{
+		width: 30%;
+		font-size: 1.2em;
+	}
+	.register button{
+		height: 50px;font-size: 1.7em;
+	}
+}
+/*--end-responsive-design--*/

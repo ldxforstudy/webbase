@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax异步请求,动态load</title>
+<script type="text/javascript" src="/resources/js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+	<div id="_div1">
+		<h1>11</h1>
+	</div>
+	<button id="_btn1">点我加载</button>
+</body>
+<script type="text/javascript">
+	$(function() {
+		
+		$("#_btn1").bind('click', getNumber);
+		
+	});
+	
+	function getNumber(){
+		console.log("click btn1");
+		$.ajax({
+			type:'GET',
+			url:'/home/number',
+			success:function(data){
+				console.log('服务端返回值:'+data);
+				appendH1(data);
+			},
+			error:function(XMLHttpRequest,textStatus,errorThrown){
+				alert(textStatus);
+			}
+		});
+	}
+	
+	// 动态append h1
+	function appendH1(_number){
+		var _div = $("#_div1");
+		for (var i=0; i<_number; i++){
+			$("<h1>11</h1>").appendTo(_div);
+		}
+	}
+</script>
+</html>
